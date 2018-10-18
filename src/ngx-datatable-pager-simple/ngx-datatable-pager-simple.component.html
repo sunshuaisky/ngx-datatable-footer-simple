@@ -1,0 +1,12 @@
+<ul class="pager">
+  <li [class.disabled]="page<=1" [ngStyle]="{'line-height':'35px'}">
+    <a (click)="prevPage()">
+      <i class="{{iconPrev}}"></i>
+    </a>
+  </li>
+  <li [class.disabled]="canNext()" [ngStyle]="{'line-height':'35px'}">
+    <a (click)="nextPage()">
+      <i class="{{iconNext}}"></i>
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,14 @@
+{
+  "generator-angular-library": {
+    "githubUsername": "zhongruigroup",
+    "githubRepoName": "ngx-datatable-footer-simple",
+    "npmModuleName": "ngx-datatable-footer-simple",
+    "moduleGlobal": "ngxDatatableFooterSimple",
+    "ngModuleName": "NgxDatatableFooterSimpleModule",
+    "selectorPrefix": "component",
+    "projectTitle": "ngx datatable footer simple",
+    "projectDescription": "",
+    "authorName": "leihg",
+    "packageManager": "npm"
+  }
+}
