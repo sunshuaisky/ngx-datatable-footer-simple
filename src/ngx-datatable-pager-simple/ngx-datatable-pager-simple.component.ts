@@ -42,7 +42,6 @@ export class NgxDatatablePagerSimpleComponent {
     return this._size;
   };
 
-  @Input() size: number;
   @Input() count: number;
 
   @Input()
