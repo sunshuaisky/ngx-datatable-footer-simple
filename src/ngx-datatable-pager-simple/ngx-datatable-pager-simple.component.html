@@ -1,4 +1,10 @@
 <ul class="pager">
+  <select *ngIf="isShowSize" [(ngModel)]="size" (change)="selectSize()">  
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+    <option value="100">100</option>  
+  </select>
   <li [class.disabled]="page<=1" [ngStyle]="{'line-height':'35px'}">
     <a (click)="prevPage()">
       <i class="{{iconPrev}}"></i>
