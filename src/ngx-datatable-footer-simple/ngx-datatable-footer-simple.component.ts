@@ -7,8 +7,8 @@ import { DatatableComponent } from '@swimlane/ngx-datatable/release/components';
   template: `
     <ng-template ngx-datatable-footer-template let-pageSize="pageSize" let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset">
       <div class="page-count" [ngStyle]="{'text-align':'right'}">
-        <ngx-datatable-pager-simple [iconPrev]="iconPrev" [iconNext]="iconNext"
-          [page]="curPage" [size]="pageSize" [datatable]="datatable" [count]="count" (change)="datatable.onFooterPage($event)" class="datatable-pager">
+        <ngx-datatable-pager-simple [iconPrev]="iconPrev" [iconNext]="iconNext" [isShowSize]="true"
+          [page]="curPage" [size]="pageSize" [datatable]="datatable" [count]="count" (changeSize)="changePageSizes($event)" (change)="datatable.onFooterPage($event)" class="datatable-pager">
         </ngx-datatable-pager-simple>
         <span *ngIf="count>=0">
           {{'当前 '+((datatable.rows&&datatable.rows.length > 0)?((offset||0)*pageSize+1):((offset||0)*pageSize))+' - '+((offset+1)*pageSize > count?count:((offset+1)||1)*pageSize)+' /'+count+' 行'}}
@@ -42,6 +42,7 @@ export class NgxDatatableFooterSimpleComponent implements OnInit {
   }
 
   @Output() display = new EventEmitter();
+  @Output() changePageSize = new EventEmitter();
 
   private _template: TemplateRef<any>;
   private _datatable: DatatableComponent;
@@ -74,5 +75,11 @@ export class NgxDatatableFooterSimpleComponent implements OnInit {
         };
       }
     }
+  };
+  
+  private changePageSizes(event): void {
+    this.changePageSize.emit({
+      size: event.size
+    })
   };
 }
