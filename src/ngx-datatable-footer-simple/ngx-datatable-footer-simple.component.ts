@@ -77,7 +77,7 @@ export class NgxDatatableFooterSimpleComponent implements OnInit {
     }
   };
   
-  private changePageSizes(event): void {
+  private changePageSizes(event: any): void {
     this.changePageSize.emit({
       size: event.size
     })
