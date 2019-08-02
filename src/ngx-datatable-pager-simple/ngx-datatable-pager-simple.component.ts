@@ -4,6 +4,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'ngx-datatable-pager-simple',
   template: `
     <ul class="pager">
+    <select *ngIf="isShowSize" [(ngModel)]="size" (change)="selectSize()">  
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="100">100</option>  
+    </select>
       <li [class.disabled]="page<=1" [ngStyle]="{'line-height':'35px'}">
         <a (click)="prevPage()">
           <i class="{{iconPrev}}"></i>
@@ -47,6 +53,7 @@ export class NgxDatatablePagerSimpleComponent {
   };
 
   @Output() change: EventEmitter<any> = new EventEmitter();
+  @Output() changeSize: EventEmitter<any> = new EventEmitter();
 
   _page = 1;
   _size = 0;
@@ -89,5 +96,16 @@ export class NgxDatatablePagerSimpleComponent {
         page
       });
     }
+  };
+
+  selectSize(): void {
+    this.selectPageSize(this.size)
+  };
+
+  selectPageSize(size: number): void {
+    this.size = size
+    this.changeSize.emit({
+      size: size
+    })
   };
 };
