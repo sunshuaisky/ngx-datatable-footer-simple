@@ -105,7 +105,7 @@ export class NgxDatatablePagerSimpleComponent {
   selectPageSize(size: number): void {
     this.size = size
     this.changeSize.emit({
-      size: size
+      size
     })
   };
 };
